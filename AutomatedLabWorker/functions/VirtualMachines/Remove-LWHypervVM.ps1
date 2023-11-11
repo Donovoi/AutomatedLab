@@ -22,7 +22,7 @@
     else
     {
         Write-PSFMessage "Stopping VM '$($Name)'"
-        $vm | Stop-VM -TurnOff -Force -WarningAction SilentlyContinue
+        $vm | Hyper-V\Stop-VM -TurnOff -Force -WarningAction SilentlyContinue
     }
 
     Write-PSFMessage "Removing VM '$($Name)'"
@@ -33,13 +33,17 @@
         $null = Get-ClusterGroup -Name $Name | Remove-ClusterGroup -RemoveResources -Force
     }
 
-    $vm | Remove-VM -Force
+    Remove-LWHypervVmConnectSettingsFile -ComputerName $Name
+
+    $vm | Hyper-V\Remove-VM -Force
 
     Write-PSFMessage "Removing VM files for '$($Name)'"
     Remove-Item -Path $vmPath -Force -Confirm:$false -Recurse
     
     $vmDescription = Join-Path -Path (Get-Lab).LabPath -ChildPath "$Name.xml"
-    if (Test-Path $vmDescription) {Remove-Item -Path $vmDescription}
+    if (Test-Path $vmDescription) {
+        Remove-Item -Path $vmDescription
+    }
 
     Write-LogFunctionExit
 }

@@ -1,11 +1,23 @@
 # Changelog
 
 ## Unreleased (yyyy-MM-dd)
-- Fix If-Condition in Start-LWHypervVM. Used wrong variables; PreDelaySeconds & PostDelaySeconds (#1582).
 
 ### Enhancements
 
 ### Bugs
+
+## 5.550.0 (2023-11-10)
+
+### Enhancements
+
+- AL creates VMConnect config files for each new Hyper-V VM (#1579).
+- Skip cluster checks on PS7
+- Added the module name to '*-VM' cmdlet calls to prevent collisions (#1573).
+- Reduces 'ssh-keyscan' timeout from 5.5 to 1.5 seconds in function 'Install-LabSshKnownHost'. Improve speed in larger Labs significant. (#1580).
+
+### Bugs
+
+- Fix If-Condition in 'Start-LWHypervVM'. Used wrong variables; PreDelaySeconds & PostDelaySeconds (#1582).
 
 ## 5.49.0 (2023-08-01)
 
@@ -31,7 +43,6 @@
 - Fix issue with DNS settings on individual Azure VMs.
 - 'Clear-LabCache' did not remove global variables used for caching.
 - AutomatedLab.Common was not copied properly to HyperV
-- Skip cluster checks on PS7
 
 ## 5.48.0 (2023-04-05)
 
