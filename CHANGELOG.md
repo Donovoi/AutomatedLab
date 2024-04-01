@@ -2,6 +2,11 @@
 
 ## Unreleased (yyyy-MM-dd)
 
+### Bugs
+
+- Fix transient issue in 'Update-LabSysinternalsTools' (#1599).
+- Fixed an issue in Stop-LabVm (#1619) with invalid error objects.
+
 ## 5.51.0 (2024-03-18)
 
 ### Enhancements
